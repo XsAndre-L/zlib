@@ -1,7 +1,7 @@
 import {
   BuildArchitectures,
   OUTPUT_DIR,
-} from "../../../config/package-config.ts";
+} from "../../../src/types/package-config.ts";
 
 import { resolve, join } from "node:path";
 
@@ -30,7 +30,7 @@ export const builds = (cwd: string): BuildArchitectures => {
       -DCMAKE_CXX_COMPILER_TARGET=x86_64-w64-windows-gnu \
       -DCMAKE_SYSTEM_NAME=Windows \
       -DCMAKE_SYSTEM_PROCESSOR=x86_64 \
-      -DCMAKE_INSTALL_PREFIX=${OUTPUT_DIR}/zlib/x86_64
+      -DCMAKE_INSTALL_PREFIX=${OUTPUT_DIR}/windows/x86_64/zlib
     `,
 
       buildStep: `cmake --build build/build-x86_64 -j`,
@@ -51,7 +51,7 @@ export const builds = (cwd: string): BuildArchitectures => {
       -DCMAKE_CXX_COMPILER_TARGET=aarch64-w64-windows-gnu \
       -DCMAKE_SYSTEM_NAME=Windows \
       -DCMAKE_SYSTEM_PROCESSOR=aarch64 \
-      -DCMAKE_INSTALL_PREFIX=${OUTPUT_DIR}/zlib/aarch64
+      -DCMAKE_INSTALL_PREFIX=${OUTPUT_DIR}/windows/aarch64/zlib
       `,
       buildStep: `cmake --build build/build-aarch64 -j`,
       installStep: `cmake --install build/build-aarch64`,

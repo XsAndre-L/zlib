@@ -4,15 +4,14 @@ import { platform } from "process";
 import { argv } from "node:process";
 
 import { builds } from "./custom.ts";
+import { BuildArchitectures, Cmd } from "../../../src/types/package-config.ts";
 import {
   BOLD,
-  BuildArchitectures,
-  Cmd,
   DARK_GREEN,
   GREEN,
   MAGENTA,
   RESET,
-} from "../../../config/package-config.ts";
+} from "../../../src/types/theme.ts";
 import { join } from "node:path";
 
 let CWD: string;
@@ -24,17 +23,6 @@ export function toSpawnCmd(cmd: Cmd): string[] {
     ? ["cmd.exe", "/d", "/s", "/c", cmd]
     : ["bash", "-lc", cmd];
 }
-
-// export async function run(cmd: Cmd, label?: string) {
-//   if (label) console.log(`${BOLD}${DARK_GREEN} ${label}${RESET}`);
-//   const p = spawn({
-//     cmd: toSpawnCmd(cmd),
-//     stdout: "inherit",
-//     stderr: "inherit",
-//   });
-//   const code = await p.exited;
-//   if (code !== 0) throw new Error(`failed: ${label ?? ""}`);
-// }
 
 export async function run(
   cmd: Cmd,
