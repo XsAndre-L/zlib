@@ -48,4 +48,18 @@ cmake -S . -B build/build-x86_64 -G Ninja \
 
 cmake --build build/build-x86_64 -j
 cmake --install build/build-x86_64
+
+cmake -S . -B build/build-x86_64 -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DZLIB_BUILD_STATIC=ON \
+  -DZLIB_BUILD_SHARED=OFF \
+  -DZLIB_BUILD_MINIZIP=OFF \
+  -DZLIB_BUILD_TESTING=OFF \
+  -DCMAKE_C_COMPILER="D:/Toolchains/llvm-mingw/bin/clang.exe" \
+  -DCMAKE_CXX_COMPILER="D:/Toolchains/llvm-mingw/bin/clang++.exe" \
+  -DCMAKE_C_COMPILER_TARGET=x86_64-w64-windows-gnu \
+  -DCMAKE_CXX_COMPILER_TARGET=x86_64-w64-windows-gnu \
+  -DCMAKE_SYSTEM_NAME=Windows \
+  -DCMAKE_SYSTEM_PROCESSOR=x86_64 \
+  -DCMAKE_INSTALL_PREFIX="../../packages/out/zlib/x86_64"
 ```
