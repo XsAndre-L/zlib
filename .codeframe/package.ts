@@ -7,14 +7,15 @@ import {
   SYSROOT,
   BuildConfiguration,
   LibraryInfo,
-} from "../../../../src/providers/package.privider.ts";
+} from "../../../../src/providers/package.provider.ts";
 
 import { join } from "node:path";
 import { argv } from "node:process";
 
-const info: LibraryInfo = {
+export const info: LibraryInfo = {
   name: "zlib",
   outDir: "build",
+  version: "1.3.1",
 };
 
 export const build = (cwd: string = process.cwd()): BuildType => {
@@ -48,7 +49,6 @@ export const build = (cwd: string = process.cwd()): BuildType => {
       -DCMAKE_SYSTEM_PROCESSOR=x86_64 \
       -DCMAKE_INSTALL_PREFIX=${CPP_OUTPUT_DIR}/${info.name}/windows/x86_64
     `,
-
       buildStep: `cmake --build ${info.outDir}/windows/x86_64 -j`,
       installStep: `cmake --install ${info.outDir}/windows/x86_64`,
     },
